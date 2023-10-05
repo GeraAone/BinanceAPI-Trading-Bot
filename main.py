@@ -11,7 +11,8 @@ client = Client(keys.api_key, keys.api_secret)
 df = pd.DataFrame(client.get_ticker())
 am = 0.001
 
-coin = 'BTCUSDT'
+ticker = input("enter your coin - ")
+coin = ticker
 
 
 def lastData(symbol, interval, lookback):
@@ -36,10 +37,10 @@ def getData(symbol, interval, limit):
 
 def placeOrder(order_type):
     if (order_type == 'buy'):
-        order = client.create_order(coin='BTCUSDT', side='BUY', type='MARKET', amount=am)
+        order = client.create_order(coin, side='BUY', type='MARKET', amount=am)
         print("Open position", order)
     else:
-        order = client.create_order(coin='BTCUSDT', side='SELL', type='MARKET', amount=am)
+        order = client.create_order(coin, side='SELL', type='MARKET', amount=am)
         print("Open position", order)
 
 
